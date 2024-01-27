@@ -3,19 +3,24 @@
 const program = require('commander');
 const fs = require('fs');
 const child_process = require('child_process');
+const path = require('path');
 
 function createDirectoryStructure(projectName) {
   fs.mkdirSync(projectName);
+  fs.copyFileSync(
+    path.join(__dirname, 'template', 'index.js'),
+    `${projectName}/index.js`
+  );
   fs.mkdirSync(`${projectName}/config`);
   fs.writeFileSync(`${projectName}/config/db.js`, '');
-  fs.writeFileSync(`${projectName}/index.js`, '');
   fs.mkdirSync(`${projectName}/routes`);
   fs.mkdirSync(`${projectName}/controllers`);
   fs.mkdirSync(`${projectName}/models`);
-  fs.mkdirSync(`${projectName}/middleware`,);
+  fs.mkdirSync(`${projectName}/middleware`);
   fs.writeFileSync(`${projectName}/middleware/globalErrorHandler.js`, '');
   fs.mkdirSync(`${projectName}/utils`);
   fs.writeFileSync(`${projectName}/utils/apiError.js`, '');
+  fs.writeFileSync(`${projectName}/.env`, '');
 }
 function initializeNpm(projectName) {
   child_process.execSync('npm init -y', { cwd: projectName });
@@ -33,6 +38,9 @@ program
     initializeNpm(projectName);
     installExpress(projectName);
     console.log(`Express app created in ${projectName}`);
+    console.log('Run the following commands to start the server');
+    console.log(`cd ${projectName}`);
+    console.log('npm start');
   });
 
 program.parse(process.argv);
