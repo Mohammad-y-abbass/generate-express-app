@@ -18,10 +18,19 @@ function createDirectoryStructure(projectName) {
   fs.mkdirSync(`${projectName}/src/controllers`);
   fs.mkdirSync(`${projectName}/src/models`);
   fs.mkdirSync(`${projectName}/src/middleware`);
-  fs.writeFileSync(`${projectName}/src/middleware/globalErrorHandler.js`, '');
+  fs.copyFileSync(
+    path.join(__dirname, 'template', 'globalErrorHandler.js'),
+    `${projectName}/src/middleware/globalErrorHandler.js`
+  );
   fs.mkdirSync(`${projectName}/src/utils`);
-  fs.writeFileSync(`${projectName}/src/utils/apiError.js`, '');
-  fs.writeFileSync(`${projectName}/.env`, '');
+  fs.copyFileSync(
+    path.join(__dirname, 'template', 'apiError.js'),
+    `${projectName}/src/utils/apiError.js`
+  );
+  fs.copyFileSync(
+    path.join(__dirname, 'template', '.env'),
+    `${projectName}/.env`
+  );
 }
 function initializeNpm(projectName) {
   child_process.execSync('npm init -y', { cwd: projectName });
