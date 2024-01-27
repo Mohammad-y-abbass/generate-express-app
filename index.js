@@ -7,19 +7,20 @@ const path = require('path');
 
 function createDirectoryStructure(projectName) {
   fs.mkdirSync(projectName);
+  fs.mkdirSync(`${projectName}/src`);
   fs.copyFileSync(
     path.join(__dirname, 'template', 'index.js'),
-    `${projectName}/index.js`
+    `${projectName}/src/index.js`
   );
-  fs.mkdirSync(`${projectName}/config`);
-  fs.writeFileSync(`${projectName}/config/db.js`, '');
-  fs.mkdirSync(`${projectName}/routes`);
-  fs.mkdirSync(`${projectName}/controllers`);
-  fs.mkdirSync(`${projectName}/models`);
-  fs.mkdirSync(`${projectName}/middleware`);
-  fs.writeFileSync(`${projectName}/middleware/globalErrorHandler.js`, '');
-  fs.mkdirSync(`${projectName}/utils`);
-  fs.writeFileSync(`${projectName}/utils/apiError.js`, '');
+  fs.mkdirSync(`${projectName}/src/config`);
+  fs.writeFileSync(`${projectName}/src/config/db.js`, '');
+  fs.mkdirSync(`${projectName}/src/routes`);
+  fs.mkdirSync(`${projectName}/src/controllers`);
+  fs.mkdirSync(`${projectName}/src/models`);
+  fs.mkdirSync(`${projectName}/src/middleware`);
+  fs.writeFileSync(`${projectName}/src/middleware/globalErrorHandler.js`, '');
+  fs.mkdirSync(`${projectName}/src/utils`);
+  fs.writeFileSync(`${projectName}/src/utils/apiError.js`, '');
   fs.writeFileSync(`${projectName}/.env`, '');
 }
 function initializeNpm(projectName) {
