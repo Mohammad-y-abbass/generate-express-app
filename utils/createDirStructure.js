@@ -118,12 +118,12 @@ async function createDirectoryStructure(projectName) {
     readline.cursorTo(process.stdout, 0);
     readline.moveCursor(process.stdout, 0, 12);
     console.log(colors.green.bold('Directory structure created successfully.'));
-    console.log(colors.blue('Run the following commands to start the server'));
-    console.log(colors.red(`cd ${projectName}`));
-    console.log(colors.red('npm start'));
+    console.log(colors.magenta('Run the following commands to start the server'));
+    console.log(colors.blue(`cd ${projectName}`));
+    console.log(colors.blue('npm start'));
   } catch (error) {
     console.error(
-      colors.red.bold('Error creating directory structure:'),
+      colors.red.bold(colors.red.bold('Error creating directory structure:')),
       error
     );
     bar1.stop(); // Stop the progress bar in case of error
