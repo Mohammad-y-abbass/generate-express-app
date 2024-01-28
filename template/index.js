@@ -1,19 +1,23 @@
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const cors = require('cors');
 require('dotenv').config();
 const apiError = require('./utils/apiError');
 const globalErrorHandler = require('./middleware/globalErrorHandler');
+const connectDB = require('./config/db');
 
 //initialize express app
 const app = express();
 
 //middlewares
+app.use(cors());
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
 
-//routes goes here
+//routes go here
+
 
 // handle all the unhandled routes
 app.all('*', (req, res, next) => {
@@ -25,6 +29,9 @@ app.all('*', (req, res, next) => {
 app.use(globalErrorHandler);
 
 //db config
+connectDB(process.env.MONGO_URI).then(() => {
+  console.log('Connected to MongoDB');
+});
 
 //start server
 app.listen(process.env.PORT, () => {

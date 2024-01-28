@@ -85,10 +85,28 @@ function installDotenv(projectName) {
   });
 }
 
+function installCors(projectName) {
+  return new Promise((resolve, reject) => {
+    child_process.exec(
+      'npm install cors',
+      { cwd: projectName },
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`Error installing cors: ${error}`);
+          reject(error);
+        } else {
+          resolve(stdout);
+        }
+      }
+    );
+  });
+}
+
 module.exports = {
   initializeNpm,
   installExpress,
   installHelmet,
   installMorgan,
   installDotenv,
+  installCors,
 };

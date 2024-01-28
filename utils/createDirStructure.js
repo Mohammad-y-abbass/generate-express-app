@@ -54,7 +54,7 @@ async function createDirectoryStructure(projectName) {
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
-    console.log(colors.green.bold('index.js copied'));
+    console.log(colors.green.bold('index.js created'));
 
     // Create config directory
     await fs.mkdir(path.join(projectName, 'src', 'config'));
@@ -64,7 +64,10 @@ async function createDirectoryStructure(projectName) {
     console.log(colors.green.bold('Config directory created'));
 
     // Create db.js (empty file)
-    await fs.writeFile(path.join(projectName, 'src', 'config', 'db.js'), '');
+    await fs.copyFile(
+      path.join(templateDir, 'db.js'),
+      path.join(projectName, 'src', 'config', 'db.js')
+    );
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
@@ -89,7 +92,7 @@ async function createDirectoryStructure(projectName) {
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
-    console.log(colors.green.bold('Global error handler copied'));
+    console.log(colors.green.bold('Global error handler created'));
 
     // Create utils directory
     await fs.mkdir(path.join(projectName, 'src', 'utils'));
@@ -106,7 +109,7 @@ async function createDirectoryStructure(projectName) {
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
-    console.log(colors.green.bold('API error file copied'));
+    console.log(colors.green.bold('API error file created'));
 
     // Copy .env
     await fs.writeFile(
@@ -118,7 +121,7 @@ async function createDirectoryStructure(projectName) {
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
-    console.log(colors.green.bold('.env file copied'));
+    console.log(colors.green.bold('.env file created'));
 
     bar1.stop(); // Stop the progress bar
     readline.cursorTo(process.stdout, 0);
