@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const program = require('commander');
 
-const createDirectoryStructure = require('./utils/createDirStructure');
+const createDirectoryStructure = require('./utils/createDirStructure.js');
 const {
   initializeNpm,
   installExpress,
@@ -21,10 +21,7 @@ program
     installHelmet(projectName);
     installMorgan(projectName);
     installDotenv(projectName);
-    console.log(`Express app created in ${projectName}`);
-    console.log('Run the following commands to start the server');
-    console.log(`cd ${projectName}`);
-    console.log('npm start');
+ 
   });
 
 program.parse(process.argv);
