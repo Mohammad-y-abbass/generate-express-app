@@ -3,6 +3,7 @@ const path = require('path');
 const cliProgress = require('cli-progress');
 const colors = require('colors');
 const readline = require('readline');
+const promptUser = require('./prompt');
 
 async function createDirectoryStructure(projectName) {
   const bar1 = new cliProgress.SingleBar(
@@ -12,6 +13,9 @@ async function createDirectoryStructure(projectName) {
   const templateDir = path.join(__dirname, '..', 'template');
 
   try {
+    // Get MONGO_URI from user
+    const MONGO_URI = await promptUser();
+
     const totalSteps = 9; // Total number of steps
     let currentStep = 0; // Current step
 
@@ -105,10 +109,12 @@ async function createDirectoryStructure(projectName) {
     console.log(colors.green.bold('API error file copied'));
 
     // Copy .env
-    await fs.copyFile(
-      path.join(templateDir, '.env'),
-      path.join(projectName, '.env')
+    await fs.writeFile(
+      path.join(projectName, '.env'),
+      `MONGO_URI=${MONGO_URI}\n
+       PORT=9001\n`
     );
+
     await delay(100); // Add artificial delay
     updateProgress(); // Update progress
 
@@ -118,13 +124,15 @@ async function createDirectoryStructure(projectName) {
     readline.cursorTo(process.stdout, 0);
     readline.moveCursor(process.stdout, 0, 12);
     console.log(colors.green.bold('Directory structure created successfully.'));
-    console.log(colors.magenta('Run the following commands to start the server'));
+    console.log(
+      colors.magenta('Run the following commands to start the server')
+    );
     console.log(colors.blue(`cd ${projectName}`));
     console.log(colors.blue('npm start'));
   } catch (error) {
     console.error(
       colors.red.bold(colors.red.bold('Error creating directory structure:')),
-      error
+      console.error(error)
     );
     bar1.stop(); // Stop the progress bar in case of error
   }
