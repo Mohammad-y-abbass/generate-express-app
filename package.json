@@ -1,15 +1,32 @@
 {
-  "name": "generate-express-app",
+  "name": "Expressify",
   "version": "1.0.0",
-  "description": "",
+  "description": "Expressify: Rapidly generate Express.js applications with ease",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bin": "index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "express",
+    "expressjs",
+    "node",
+    "nodejs",
+    "web",
+    "web development",
+    "backend",
+    "server",
+    "javascript",
+    "boilerplate",
+    "generator",
+    "scaffolding",
+    "cli",
+    "command-line",
+    "project-setup",
+    "code-generation"
+  ],
+  "author": "Mohammad Abbass",
+  "license": "MIT",
   "dependencies": {
     "cli-progress": "^3.12.0",
     "colors": "^1.4.0",
