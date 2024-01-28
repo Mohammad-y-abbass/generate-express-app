@@ -2,6 +2,8 @@ const fs = require('fs').promises;
 const path = require('path');
 const cliProgress = require('cli-progress');
 const colors = require('colors');
+const readline = require('readline');
+
 async function createDirectoryStructure(projectName) {
   const bar1 = new cliProgress.SingleBar(
     {},
@@ -113,11 +115,12 @@ async function createDirectoryStructure(projectName) {
     console.log(colors.green.bold('.env file copied'));
 
     bar1.stop(); // Stop the progress bar
-
+    readline.cursorTo(process.stdout, 0);
+    readline.moveCursor(process.stdout, 0, 12);
     console.log(colors.green.bold('Directory structure created successfully.'));
     console.log(colors.blue('Run the following commands to start the server'));
-    console.log(`cd ${projectName}`);
-    console.log(colors.blue('npm start'));
+    console.log(colors.red(`cd ${projectName}`));
+    console.log(colors.red('npm start'));
   } catch (error) {
     console.error(
       colors.red.bold('Error creating directory structure:'),
