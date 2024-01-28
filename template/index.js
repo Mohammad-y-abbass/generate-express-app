@@ -2,6 +2,8 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 require('dotenv').config();
+const apiError = require('./utils/apiError');
+const globalErrorHandler = require('./middleware/globalErrorHandler');
 
 //initialize express app
 const app = express();

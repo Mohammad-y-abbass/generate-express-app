@@ -9,7 +9,7 @@ const {
   installMorgan,
   installDotenv,
 } = require('./utils/installPkg');
-
+const addNodemonStartScript = require('./utils/addStartScript');
 
 program
   .version('1.0.0')
@@ -21,7 +21,7 @@ program
     installHelmet(projectName);
     installMorgan(projectName);
     installDotenv(projectName);
- 
+    addNodemonStartScript(projectName);
   });
 
 program.parse(process.argv);
