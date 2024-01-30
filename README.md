@@ -13,11 +13,14 @@ Then run `npm install -g rapid-express-cli` to install it globally.
 
 ## Usage
 
-Generating a new Express.js application using rapid-express is as simple as running the following command:
+First navigate to the directory that you want to build the project in.
 
-`rapid-express create project-name`
+run the following command:
 
-Replace project-name with the name of your new Express.js project. rapid-express will create a new directory with the specified project name and generate the boilerplate Express.js application inside it.
+`npx @mohammad-abbass/rapid-express your-project-name
+`
+
+Replace your-project-name with the name of your new Express.js project. rapid-express will create a new folder with the specified project name and generate the boilerplate Express.js application inside it.
 
 After that you will be prompted to enter your MONGO_URI to set up connection to database, paste it and press enter.
 
