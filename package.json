@@ -4,8 +4,10 @@
   "description": "Rapidly generate Express.js applications with ease",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "bin": "index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "rapid-express": "index.js"
   },
   "keywords": [
     "express",
