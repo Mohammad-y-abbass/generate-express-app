@@ -20,9 +20,9 @@ run the following command:
 `npx @mohammad-abbass/rapid-express your-project-name
 `
 
-Replace your-project-name with the name of your new Express.js project. rapid-express will create a new folder with the specified project name and generate the boilerplate Express.js application inside it.
+Replace `your-project-name` with the name of your new Express.js project. rapid-express will create a new folder with the specified project name and generate the boilerplate Express.js application inside it.
 
-After that you will be prompted to enter your MONGO_URI to set up connection to database, paste it and press enter.
+After that you will be prompted to enter your `MONGO_URI` to set up connection to database, paste it and press enter.
 
 ## Project Structure
 
