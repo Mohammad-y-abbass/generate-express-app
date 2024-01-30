@@ -1,5 +1,5 @@
 {
-  "name": "Expressify",
+  "name": "create-express-app",
   "version": "1.0.0",
   "description": "Expressify: Rapidly generate Express.js applications with ease",
   "main": "index.js",
