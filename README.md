@@ -8,8 +8,7 @@ Welcome to rapid-express, your go-to tool for rapidly generating Express.js appl
 
 ## Installation
 
-First navigate to the directory where you want to create your project.
-Then run `npm i @mohammad-abbass/rapid-express` to install it globally.
+Run `npm i @mohammad-abbass/rapid-express` to install.
 
 ## Usage
 
