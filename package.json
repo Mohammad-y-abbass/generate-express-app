@@ -1,7 +1,7 @@
 {
-  "name": "create-express-app",
+  "name": "RapidExpress",
   "version": "1.0.0",
-  "description": "Expressify: Rapidly generate Express.js applications with ease",
+  "description": "Rapidly generate Express.js applications with ease",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
