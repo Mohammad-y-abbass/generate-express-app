@@ -1,5 +1,5 @@
 {
-  "name": "@mohammad-abbass/RapidExpress",
+  "name": "@mohammad-abbass/rapid-express",
   "version": "1.0.0",
   "description": "Rapidly generate Express.js applications with ease",
   "main": "index.js",
