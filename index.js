@@ -1,15 +1,11 @@
 #!/usr/bin/env node
 const program = require('commander');
+const colors = require('colors');
 
 const createDirectoryStructure = require('./utils/createDirStructure.js');
-const {
-  initializeNpm,
-  installExpress,
-  installHelmet,
-  installMorgan,
-  installDotenv,
-} = require('./utils/installPkg');
 const addNodemonStartScript = require('./utils/addStartScript');
+const initializeNpm = require('./utils/initPkg');
+const installPkgs = require('./utils/installPkgs');
 
 program
   .version('1.0.0')
@@ -17,11 +13,20 @@ program
   .action(async (projectName) => {
     await createDirectoryStructure(projectName);
     initializeNpm(projectName)
-      .then(() => installExpress(projectName))
-      .then(() => installHelmet(projectName))
-      .then(() => installMorgan(projectName))
-      .then(() => installDotenv(projectName))
+      .then(() => installPkgs('express', projectName))
+      .then(() => installPkgs('helmet', projectName))
+      .then(() => installPkgs('morgan', projectName))
+      .then(() => installPkgs('dotenv', projectName))
+      .then(() => installPkgs('nodemon', projectName))
+      .then(() => installPkgs('cors', projectName))
       .then(() => addNodemonStartScript(projectName))
+      .then(() => {
+        console.log(
+          colors.magenta('Run the following commands to start the server')
+        );
+        console.log(colors.blue(`cd ${projectName}`));
+        console.log(colors.blue('npm start'));
+      })
       .catch((error) => {
         console.error('Error:', error);
       });
