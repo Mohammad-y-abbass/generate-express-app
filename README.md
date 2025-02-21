@@ -25,16 +25,11 @@ You can install the CLI tool globally or use `npx` to generate a project without
 npm i @mohammad-abbass/rapid-express
 ```
 
-### Use with npx
-```bash
-npx create <app-name>
-```
-
 ## Usage
 
 To generate a new Express.js project, run:
 ```bash
-npx express-project-generator my-express-app
+npx create <app-name>
 ```
 
 This will:
