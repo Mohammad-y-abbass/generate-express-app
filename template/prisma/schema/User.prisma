@@ -1,0 +1,14 @@
+model User {
+  id        Int    @id @default(autoincrement())
+  email     String @unique
+  firstName String
+  middleName String
+  lastName  String
+  password  String
+  dob       DateTime
+  country   String
+  city      String
+  address   String
+  phone     String
+  createdAt DateTime @default(now())
+}
