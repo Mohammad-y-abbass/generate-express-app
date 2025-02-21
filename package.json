@@ -29,6 +29,10 @@
   ],
   "author": "Mohammad Abbass",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "dependencies": {
     "cli-progress": "^3.12.0",
     "colors": "^1.4.0",

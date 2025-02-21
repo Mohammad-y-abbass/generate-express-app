@@ -83,7 +83,6 @@ const createProject = async (appName) => {
 };
 
 program
-  .version('1.0.0')
   .arguments('<app-name>')
   .description('Generate a new project from a template')
   .action(createProject);
