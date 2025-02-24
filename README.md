@@ -118,7 +118,6 @@ All controllers and services are automatically wrapped in a global error handler
 ### Custom Error Handling Example
 
 ```typescript
-// src/errors/ConflictError.ts
 export default class ConflictError extends AppError {
   constructor(message: string) {
     super(message);
