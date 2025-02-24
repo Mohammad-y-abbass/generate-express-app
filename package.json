@@ -34,6 +34,7 @@
     "access": "public"
   },
   "dependencies": {
+    "@mohammad-abbass/rapid-express": "^2.0.0",
     "cli-progress": "^3.12.0",
     "colors": "^1.4.0",
     "commander": "^11.1.0",

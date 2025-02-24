@@ -39,26 +39,6 @@ This will:
 
 ## Project Structure
 
-```
-# Express.js CLI Tool
-
-## Overview
-This CLI tool generates a **class-based Express.js application** with **Prisma** and built-in decorators for routing, middleware, and request validation. It follows a structured approach to keep the codebase clean and maintainable.
-
-### Features
-- **Class-based architecture** for controllers and services.
-- **Built-in decorators**: `@Get`, `@Post`, `@Middlewares`, and `@ValidateBody`.
-- **Prisma integration** for database management.
-- **Automatic error handling**: No need to manually write `try-catch` blocks in controllers and services.
-- **Custom error handlers** are automatically generated.
-- **Authentication endpoints** (`signup` and `signin`) are included by default.
-
-## Installation
-```sh
-npx generate <app-name>
-```
-
-## Project Structure
 The generated project follows this structure:
 ```
 <app-name>/
