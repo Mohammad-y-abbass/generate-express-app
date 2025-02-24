@@ -1,6 +1,6 @@
 {
   "name": "@mohammad-abbass/rapid-express",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Rapidly generate Express.js applications with ease",
   "main": "index.js",
   "scripts": {
