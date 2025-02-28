@@ -15,6 +15,7 @@ function Route(method: HttpMethod, path: string): MethodDecorator {
     });
 
     Reflect.defineMetadata(ROUTE_METADATA_KEY, routes, target.constructor);
+
   };
 }
 

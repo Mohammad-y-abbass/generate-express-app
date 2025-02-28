@@ -5,6 +5,7 @@ import {
   type ControllerType,
 } from '../decorators/decorators.types';
 import { ROUTE_MIDDLEWARE_METADATA_KEY } from '../decorators/middleware';
+import { CONTROLLER_METADATA_KEY } from '../decorators/controller';
 
 export async function registerControllers(
   app: Application,
@@ -19,9 +20,14 @@ export async function registerControllers(
     const middlewares =
       Reflect.getMetadata(ROUTE_MIDDLEWARE_METADATA_KEY, ControllerClass) || [];
 
+    const routePath = Reflect.getMetadata(
+      CONTROLLER_METADATA_KEY,
+      ControllerClass
+    );
+
     routes.forEach(({ method, path, handlerName }: RouteDefinition) => {
       app[method.toLowerCase() as keyof Application](
-        `/api/${path}`,
+        `/api/${routePath}/${path}`,
         ...middlewares,
         async (req: Request, res: Response, next: NextFunction) => {
           try {
@@ -33,7 +39,7 @@ export async function registerControllers(
       );
 
       console.log(
-        `✅ Registered: [${method}] ${path} -> ${handlerName} in ${ControllerClass.name}`
+        `✅ Registered: [${method}] ${routePath}/${path} -> ${handlerName} in ${ControllerClass.name}`
       );
     });
   });
