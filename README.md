@@ -9,6 +9,7 @@ This CLI tool generates a **class-based Express.js** project with built-in suppo
   - `@Get()`, `@Post()`, `@Put()`, `@Delete()`. for defining routes.
   - `@Middlewares()` , pass it an array of the middlewares you want to apply to a route.
   - `@ValidateBody()` for request body validation using express-validator.
+  - `@Controller()` for determining a common path to all the routes inside the controller
 - **Prisma Integration**: Preconfigured ORM setup for managing databases efficiently.
 - **Automatic Error Handling**:
   - No need to use `try-catch` in controllers and services.
@@ -21,6 +22,7 @@ This CLI tool generates a **class-based Express.js** project with built-in suppo
 You can install the CLI tool globally or use `npx` to generate a project without installation.
 
 ### Install Globally
+
 ```bash
 npm i @mohammad-abbass/rapid-express
 ```
@@ -28,11 +30,13 @@ npm i @mohammad-abbass/rapid-express
 ## Usage
 
 To generate a new Express.js project, run:
+
 ```bash
 npx create <app-name>
 ```
 
 This will:
+
 1. Create a new directory `my-express-app`.
 2. Scaffold a class-based Express.js application.
 3. Set up Prisma, authentication, and decorators.
@@ -40,6 +44,7 @@ This will:
 ## Project Structure
 
 The generated project follows this structure:
+
 ```
 <app-name>/
 ├── src/
@@ -75,8 +80,9 @@ The generated project follows this structure:
 ### Controller with Decorators
 
 ```typescript
+@Controller('auth')
 export class AuthController extends BaseController {
-  @Post('auth/signup')
+  @Post('signup')
   @Middlewares([AuthLimiter])
   @ValidateBody(signupValidations)
   async SignUp(req: Request, res: Response, next: NextFunction) {
@@ -87,7 +93,7 @@ export class AuthController extends BaseController {
     res.status(201).json({ message: 'User registered successfully' });
   }
 
-  @Post('auth/signin')
+  @Post('signin')
   @Middlewares([AuthLimiter])
   @ValidateBody(signinValidations)
   async SignIn(req: Request, res: Response, next: NextFunction) {
@@ -107,9 +113,7 @@ export class AuthController extends BaseController {
     });
   }
 }
-
 ```
-
 
 ### No Need for Try-Catch in Controllers & Services
 
@@ -144,4 +148,3 @@ export default class ConflictError extends AppError {
 ## License
 
 MIT License
-
