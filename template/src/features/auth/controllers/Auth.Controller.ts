@@ -7,9 +7,11 @@ import signupValidations from '../validations/signupValidations';
 import signinValidations from '../validations/signinValidations';
 import AuthLimiter from '../middlewares/rateLimitMiddleware';
 import { ValidateBody } from '../../../decorators/validator';
+import Controller from '../../../decorators/controller';
 
+@Controller('auth')
 export class AuthController extends BaseController {
-  @Post('auth/signup')
+  @Post('signup')
   @Middlewares([AuthLimiter])
   @ValidateBody(signupValidations)
   async SignUp(req: Request, res: Response, next: NextFunction) {
@@ -20,7 +22,7 @@ export class AuthController extends BaseController {
     res.status(201).json({ message: 'User registered successfully' });
   }
 
-  @Post('auth/signin')
+  @Post('signin')
   @Middlewares([AuthLimiter])
   @ValidateBody(signinValidations)
   async SignIn(req: Request, res: Response, next: NextFunction) {
