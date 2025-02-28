@@ -17,6 +17,8 @@ This CLI tool generates a **class-based Express.js** project with built-in suppo
 - **Authentication Endpoints**: Generates authentication routes (signup & signin) with JWT support.
 - **TypeScript Support**: Type safety and modern JavaScript features are included by default.
 
+- Register a controller to the app by adding it to the array passed to the initializeApp function in index.ts
+
 ## Installation
 
 You can install the CLI tool globally or use `npx` to generate a project without installation.
@@ -144,6 +146,9 @@ export default class ConflictError extends AppError {
    ```bash
    npm run dev
    ```
+
+## To Contribute
+https://github.com/Mohammad-y-abbass/rapid-express
 
 ## License
 
